@@ -20,7 +20,12 @@ app.use(errorHandler);
 const server = http.createServer(app);
 initSocket(server, origins);
 const PORT = process.env.PORT || 5000;
+
+// Listen immediately so Vercel's startup probe succeeds,
+// then connect to MongoDB in the background.
+server.listen(PORT, () => console.log(`Server on :${PORT}`));
+
 connectDB().then(async () => {
   await seed();
-  server.listen(PORT, () => console.log(`Server on :${PORT}`));
-}).catch(e => { console.error(e); process.exit(1); });
+  console.log('DB connected and seed done');
+}).catch(e => { console.error('DB connection failed:', e.message); });
