@@ -1,0 +1,15 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+@layer components {
+  .btn { @apply inline-flex items-center gap-1 whitespace-nowrap rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50; }
+  .btn-ghost { @apply inline-flex items-center gap-1 whitespace-nowrap rounded-lg border px-3 py-2 text-sm hover:bg-slate-100; }
+  /* 16px text on phones stops iOS from zooming in when an input is focused */
+  .input { @apply w-full min-w-0 rounded-lg border border-slate-300 bg-white px-3 py-2 text-base outline-none focus:border-indigo-500 sm:text-sm; }
+  /* min-w-0 lets cards shrink inside grid/flex parents instead of pushing past the screen edge */
+  .card { @apply min-w-0 rounded-xl bg-white p-4 shadow-sm border border-slate-200 sm:p-5; }
+  /* full-height app shell: dvh accounts for mobile browser toolbars, vh is the fallback */
+  .app-shell { height: 100vh; height: 100dvh; }
+}
+html { -webkit-text-size-adjust: 100%; }
+body { @apply bg-slate-50 text-slate-800; overflow-wrap: break-word; }
+img, video { max-width: 100%; height: auto; }
+svg { flex-shrink: 0; }

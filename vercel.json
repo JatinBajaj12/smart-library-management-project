@@ -1,0 +1,10 @@
+{
+  "services": {
+    "frontend": { "root": "client/", "entrypoint": "Dockerfile" },
+    "backend": { "root": "server/", "entrypoint": "Dockerfile" }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": { "service": "backend" } },
+    { "source": "/(.*)", "destination": { "service": "frontend" } }
+  ]
+}
